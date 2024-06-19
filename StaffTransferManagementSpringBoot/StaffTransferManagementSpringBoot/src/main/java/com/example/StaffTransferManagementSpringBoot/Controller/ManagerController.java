@@ -25,8 +25,9 @@ public class ManagerController {
 
   @PostMapping("/manager")
   public String addManager(@RequestBody ManagerRequest manager){
+    Manager i = new Manager();
     Optional<Institution> inst = institutionService.findById(manager.getInstitutionId());
-    Manager i =modelMapper.map(manager,Manager.class);
+           i =modelMapper.map(manager,Manager.class);
     if(inst.isPresent()){
       i.setInstitution(inst.get());
 
